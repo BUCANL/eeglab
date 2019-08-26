@@ -4,3 +4,6 @@
 [submodule "plugins/dipfit"]
 	path = plugins/dipfit
 	url = https://github.com/sccn/dipfit.git
+[submodule "plugins/bids-matlab-tools"]
+	path = plugins/bids-matlab-tools
+	url = https://github.com/BUCANL/bids-matlab-tools.git
