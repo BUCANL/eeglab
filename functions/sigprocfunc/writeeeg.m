@@ -161,11 +161,15 @@ if ~isempty(HDR.EVENT)
             end
             alltypes = unique_bc( { HDR.EVENT.type } );
         end
+        
         for i = 1:length(HDR.EVENT)
             if isfield(HDR.EVENT, 'type')
                 ind = str2num(HDR.EVENT(i).type);
+                if strcmp(HDR.EVENT(i).type(1:2),'e-')
+                    ind = [];
+                end
                 if isempty(ind)
-                    ind = strmatch(HDR.EVENT(i).type, alltypes, 'exact');
+                    ind = find(strcmp(HDR.EVENT(i).type, alltypes));
                 end
                 EVENT.TYP(i) = ind;
             end
@@ -196,7 +200,7 @@ if isempty(HDR.EVENT)
     HDR.EVENT.CHN = [];
 elseif ~strcmpi(HDR.TYPE, 'GDF') % GDF can save events
     disp('Recreating event channel');
-    x(end+1,:) = 0;
+    x(end+1,:) = 0.0;
     x(end,round(HDR.EVENT.POS')) = HDR.EVENT.TYP';
     HDR.Label = char(HDR.Label, 'Status');
     HDR.EVENT.POS = [];
@@ -239,4 +243,5 @@ HDR.VERSION = 2.11;
 
 HDR = sopen(HDR,'w');
 HDR = swrite(HDR, x');
-HDR = sclose(HDR);
+% Octave compatability issue with below line. Commenting out for now.
+% HDR = sclose(HDR);
