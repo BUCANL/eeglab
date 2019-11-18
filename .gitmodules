@@ -13,3 +13,12 @@
 [submodule "plugins/ICLabel"]
 	path = plugins/ICLabel
 	url = https://github.com/BUCANL/ICLabel
+[submodule "plugins/amica"]
+	path = plugins/amica
+	url = https://github.com/BUCANL/Amica
+[submodule "plugins/batch_context"]
+	path = plugins/batch_context
+	url = https://github.com/BUCANL/Batch-Context
+[submodule "plugins/vised_marks"]
+	path = plugins/vised_marks
+	url = https://github.com/BUCANL/Vised-Marks
